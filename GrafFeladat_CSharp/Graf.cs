@@ -137,5 +137,35 @@ namespace GrafFeladat_CSharp
                 }
             }
         }
+        public bool osszeFuggo()
+        {
+            List<int> bejar = new List<int>();
+
+            Queue<int> kovetkezok = new Queue<int>();
+            kovetkezok.Enqueue(0);
+            bejar.Add(0);
+
+            while (kovetkezok.Count > 0)
+            {
+                int k = kovetkezok.Dequeue();
+
+                foreach (var item in elek)
+                {
+                    if (item.Csucs1 == k && !(bejar.Contains(item.Csucs2)))
+                    {
+                        kovetkezok.Enqueue(item.Csucs2);
+                        bejar.Add(item.Csucs2);
+                    }
+                }
+            }
+            if (bejar.Count == this.csucsokSzama)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }
