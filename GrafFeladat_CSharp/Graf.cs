@@ -103,8 +103,9 @@ namespace GrafFeladat_CSharp
             sor.Enqueue(kezdoPont);
             bejar.Add(kezdoPont);
 
+            int k;
             while (sor.Count > 0){
-                int k = sor.Dequeue();
+                k = sor.Dequeue();
 
                 Console.WriteLine("A csúcs: " + k);
 
@@ -124,8 +125,9 @@ namespace GrafFeladat_CSharp
             kovetkezok.Push(kezdoPont);
             bejar.Add(kezdoPont);
 
+            int k;
             while (kovetkezok.Count > 0){
-                int k = kovetkezok.Pop();
+                k = kovetkezok.Pop();
 
                 Console.WriteLine("A csúcs: " + k);
 
@@ -145,9 +147,10 @@ namespace GrafFeladat_CSharp
             kovetkezok.Enqueue(0);
             bejar.Add(0);
 
+            int k;
             while (kovetkezok.Count > 0)
             {
-                int k = kovetkezok.Dequeue();
+                k = kovetkezok.Dequeue();
 
                 foreach (var item in elek)
                 {
@@ -177,13 +180,14 @@ namespace GrafFeladat_CSharp
             kovetkezok.Enqueue(0);
             bejar.Add(0);
 
+            int aktualisCsucs;
             while (kovetkezok.Count > 0)
             {
-                int aktualisCucs = kovetkezok.Dequeue();
+                aktualisCsucs = kovetkezok.Dequeue();
 
                 foreach (var item in elek)
                 {
-                    if (item.Csucs1 == aktualisCucs && !(bejar.Contains(item.Csucs2)))
+                    if (item.Csucs1 == aktualisCsucs && !(bejar.Contains(item.Csucs2)))
                     {
                         bejar.Add(item.Csucs2);
                         kovetkezok.Enqueue(item.Csucs2);
