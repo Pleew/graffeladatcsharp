@@ -167,5 +167,31 @@ namespace GrafFeladat_CSharp
                 return false;
             }
         }
+        public Graf feszitoFa()
+        {
+            Graf fa = new Graf(this.csucsokSzama);
+
+            List<int> bejar = new List<int>();
+            Queue<int> kovetkezok = new Queue<int>();
+
+            kovetkezok.Enqueue(0);
+            bejar.Add(0);
+
+            while (kovetkezok.Count > 0)
+            {
+                int aktualisCucs = kovetkezok.Dequeue();
+
+                foreach (var item in elek)
+                {
+                    if (item.Csucs1 == aktualisCucs && !(bejar.Contains(item.Csucs2)))
+                    {
+                        bejar.Add(item.Csucs2);
+                        kovetkezok.Enqueue(item.Csucs2);
+                        fa.Hozzaad(item.Csucs1, item.Csucs2);
+                    }
+                }
+            }
+            return fa;
+        }
     }
 }
