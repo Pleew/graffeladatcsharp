@@ -139,8 +139,7 @@ namespace GrafFeladat_CSharp
                 }
             }
         }
-        public bool osszeFuggo()
-        {
+        public bool osszeFuggo(){
             List<int> bejar = new List<int>();
 
             Queue<int> kovetkezok = new Queue<int>();
@@ -148,30 +147,24 @@ namespace GrafFeladat_CSharp
             bejar.Add(0);
 
             int k;
-            while (kovetkezok.Count > 0)
-            {
+            while (kovetkezok.Count > 0){
                 k = kovetkezok.Dequeue();
 
-                foreach (var item in elek)
-                {
-                    if (item.Csucs1 == k && !(bejar.Contains(item.Csucs2)))
-                    {
+                foreach (var item in elek){
+                    if (item.Csucs1 == k && !(bejar.Contains(item.Csucs2))){
                         kovetkezok.Enqueue(item.Csucs2);
                         bejar.Add(item.Csucs2);
                     }
                 }
             }
-            if (bejar.Count == this.csucsokSzama)
-            {
+            if (bejar.Count == this.csucsokSzama){
                 return true;
             }
-            else
-            {
+            else{
                 return false;
             }
         }
-        public Graf feszitoFa()
-        {
+        public Graf feszitoFa(){
             Graf fa = new Graf(this.csucsokSzama);
 
             List<int> bejar = new List<int>();
@@ -181,14 +174,11 @@ namespace GrafFeladat_CSharp
             bejar.Add(0);
 
             int aktualisCsucs;
-            while (kovetkezok.Count > 0)
-            {
+            while (kovetkezok.Count > 0){
                 aktualisCsucs = kovetkezok.Dequeue();
 
-                foreach (var item in elek)
-                {
-                    if (item.Csucs1 == aktualisCsucs && !(bejar.Contains(item.Csucs2)))
-                    {
+                foreach (var item in elek){
+                    if (item.Csucs1 == aktualisCsucs && !(bejar.Contains(item.Csucs2))){
                         bejar.Add(item.Csucs2);
                         kovetkezok.Enqueue(item.Csucs2);
                         fa.Hozzaad(item.Csucs1, item.Csucs2);
